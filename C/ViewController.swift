@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import JSAnimatedImagesView
+class ViewController: UIViewController,JSAnimatedImagesViewDataSource {
+    @IBOutlet var VC: JSAnimatedImagesView!
 
-class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.VC.dataSource = self
+    }
+    
+    func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
+        return UIImage(named: "image\(index+1).jpg")
+    }
+    
+    func animatedImagesNumberOfImages(animatedImagesView: JSAnimatedImagesView!) -> UInt {
+        return 4
     }
 
     override func didReceiveMemoryWarning() {
